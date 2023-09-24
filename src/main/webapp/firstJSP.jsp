@@ -11,10 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-<% User user = new User("Akzhol","Serikbek",(byte)23);%>
 <p><%=  System.out.println("This is JavaCode") %></p>
-<p><%=  System.out.println(user.toString()) %></p>
-
 <%= new java.util.Date()%>
 </body>
 </html>
