@@ -16,6 +16,6 @@
 <%
     User user = new User("Akzhol","Serikbek",(byte)23);
 %>
-<%= userS%>
+<%= user%>
 </body>
 </html>
