@@ -18,6 +18,8 @@ public class ServletTest extends HttpServlet {
         out.println("<h1>" + "Hello " + name + "</h1>");
         out.println("</body></html>");
         response.sendRedirect("hello-firstJSP");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/hello-firstJSP");
+        dispatcher.forward(request,response);
     }
 
     @Override
