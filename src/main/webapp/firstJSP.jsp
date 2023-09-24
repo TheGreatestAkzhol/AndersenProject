@@ -13,6 +13,9 @@
 <body>
 <p><%= "That is JavaCode" %></p>
 <%= new java.util.Date()%>
-
+<%
+    User user = new User("Akzhol","Serikbek",(byte)23);
+%>
+<%= user%>
 </body>
 </html>
