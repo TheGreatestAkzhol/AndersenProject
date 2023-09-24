@@ -11,7 +11,8 @@
     <title>Title</title>
 </head>
 <body>
-<p><%=  System.out.println("This is JavaCode") %></p>
+<p><%= "That is JavaCode" %></p>
 <%= new java.util.Date()%>
+
 </body>
 </html>
