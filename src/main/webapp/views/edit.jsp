@@ -22,7 +22,7 @@
     <div class="col-4"></div>
     <div class="col-4">
       <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-        <div class="card-header">New User</div>
+        <div class="card-header">Edit User</div>
           <div class="card-body">
 
             <form method="POST" action="/andersen_project/ServletUpdateUser?id=${user.getId()}">

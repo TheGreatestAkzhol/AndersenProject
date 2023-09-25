@@ -5,10 +5,7 @@ package com.example.akosoftcompany.dao;
 import com.example.akosoftcompany.model.User;
 import com.example.akosoftcompany.util.Util;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +32,9 @@ public class UserDaoJDBCImpl implements UserDao {
                 " schemaname = 'public' AND" +
                 " tablename = 'userbase')";
         try {
-            Statement statement = Util.getConnection().createStatement();
+            Connection connection = Util.getConnection();
+            connection.setTransactionIsolation(8);
+            Statement statement = connection.createStatement();
             statement.execute(creating);
             if(statement.execute(checking)){
                 LOGGER.log(Level.INFO,"Base is already exist)");
@@ -51,7 +50,9 @@ public class UserDaoJDBCImpl implements UserDao {
     public void dropUsersTable() {
         String sql =  "DROP TABLE IF EXISTS newbase.public.user_base";
         try {
-            Statement statement = Util.getConnection().createStatement();
+            Connection connection = Util.getConnection();
+            connection.setTransactionIsolation(8);
+            Statement statement = connection.createStatement();
             statement.executeUpdate(sql);
             LOGGER.log(Level.INFO, "Table deleted in given database...");
             statement.close();
@@ -62,7 +63,9 @@ public class UserDaoJDBCImpl implements UserDao {
 
     public void saveUser(String name, String lastName, byte age) {
         try {
-            preparedStatement = Util.getConnection().prepareStatement(insertNew);
+            Connection connection = Util.getConnection();
+            connection.setTransactionIsolation(8);
+            preparedStatement = connection.prepareStatement(insertNew);
             preparedStatement.setString(1,name);
             preparedStatement.setString(2,lastName);
             preparedStatement.setByte(3,age);
@@ -77,7 +80,9 @@ public class UserDaoJDBCImpl implements UserDao {
     @Override
     public void updateUser(long id, User newUser) {
         try{
-            PreparedStatement ps = Util.getConnection().prepareStatement(update);
+            Connection connection = Util.getConnection();
+            connection.setTransactionIsolation(8);
+            PreparedStatement ps = connection.prepareStatement(update);
             ps.setString(1,newUser.getName());
             ps.setString(2,newUser.getLastName());
             ps.setByte(3,newUser.getAge());
@@ -92,7 +97,9 @@ public class UserDaoJDBCImpl implements UserDao {
     public void removeUserById(long id) {
         String deleting = "delete from newbase.public.user_base where id = {0}";
         try {
-            Statement statement = Util.getConnection().createStatement();
+            Connection connection = Util.getConnection();
+            connection.setTransactionIsolation(2);
+            Statement statement = connection.createStatement();
             statement.execute(MessageFormat.format(deleting,id));
             statement.close();
             LOGGER.log(Level.INFO,"User with id {0} is deleted from database",id);
@@ -105,7 +112,9 @@ public class UserDaoJDBCImpl implements UserDao {
         List<User> list = new ArrayList<>();
         String getAll = "Select * from newbase.public.user_base";
         try {
-            PreparedStatement ps = Util.getConnection().prepareStatement(getAll);
+            Connection connection = Util.getConnection();
+            connection.setTransactionIsolation(2);
+            PreparedStatement ps = connection.prepareStatement(getAll);
             ResultSet resultSet = ps.executeQuery();
             while(resultSet.next()){
                 User user = new User();
@@ -127,7 +136,9 @@ public class UserDaoJDBCImpl implements UserDao {
         User user = new User();
         String query = "SELECT * FROM newbase.public.user_base where id = " + id;
         try{
-            PreparedStatement ps = Util.getConnection().prepareStatement(query);
+            Connection connection = Util.getConnection();
+            connection.setTransactionIsolation(2);
+            PreparedStatement ps = connection.prepareStatement(query);
             ResultSet resultSet = ps.executeQuery();
             while(resultSet.next()){
                 user.setId((long) resultSet.getInt("ID"));
@@ -144,8 +155,10 @@ public class UserDaoJDBCImpl implements UserDao {
 
     public void cleanUsersTable() {
         try {
+            Connection connection = Util.getConnection();
+            connection.setTransactionIsolation(8);
             String deleteUsers = "truncate table newbase.public.user_base";
-            Statement statement = Util.getConnection().createStatement();
+            Statement statement = connection.createStatement();
             statement.execute(deleteUsers);
             LOGGER.log(Level.INFO,"All users deleted from your database");
             statement.close();
