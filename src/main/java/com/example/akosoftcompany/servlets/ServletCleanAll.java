@@ -19,6 +19,6 @@ public class ServletCleanAll extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         userService.cleanUsersTable();
-        response.sendRedirect("/ServletGetAll");
+        response.sendRedirect("/andersen_project/ServletGetAll");
     }
 }

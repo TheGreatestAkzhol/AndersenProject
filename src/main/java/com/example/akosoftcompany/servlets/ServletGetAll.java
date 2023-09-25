@@ -17,7 +17,7 @@ public class ServletGetAll extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<User> users =  userService.getAllUsers();
         request.getSession().setAttribute("users",users);
-        response.sendRedirect("/showAll");
+        response.sendRedirect("/andersen_project/showAll");
     }
 
     @Override

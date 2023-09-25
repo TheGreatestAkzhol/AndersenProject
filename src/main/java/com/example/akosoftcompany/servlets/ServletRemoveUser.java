@@ -18,6 +18,6 @@ public class ServletRemoveUser extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         userService.removeUserById(Long.parseLong(request.getParameter("id")));
-        response.sendRedirect("/ServletGetAll");
+        response.sendRedirect("/andersen_project/ServletGetAll");
     }
 }

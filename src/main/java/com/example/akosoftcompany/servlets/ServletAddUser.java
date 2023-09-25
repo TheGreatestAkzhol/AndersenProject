@@ -13,7 +13,7 @@ public class ServletAddUser extends HttpServlet {
     UserService userService = new UserServiceImpl();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.sendRedirect("/addUser");
+        response.sendRedirect("/andersen_project/addUser");
     }
 
     @Override
@@ -22,6 +22,6 @@ public class ServletAddUser extends HttpServlet {
         String lastname = request.getParameter("lastname");
         byte age = Byte.parseByte(request.getParameter("age"));
         userService.saveUser(name,lastname,age);
-        response.sendRedirect("/ServletGetAll");
+        response.sendRedirect("/andersen_project/ServletGetAll");
     }
 }

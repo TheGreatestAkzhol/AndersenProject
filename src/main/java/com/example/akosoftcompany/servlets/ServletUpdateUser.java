@@ -17,7 +17,7 @@ public class ServletUpdateUser extends HttpServlet {
         long id = Long.parseLong(request.getParameter("id"));
         User user = userService.findOne(id);
         request.getSession().setAttribute("user",user);
-        response.sendRedirect("/editUser");
+        response.sendRedirect("/andersen_project/editUser");
     }
 
     @Override
@@ -28,6 +28,6 @@ public class ServletUpdateUser extends HttpServlet {
         User user = new User(name,lastname,age);
         long id = Long.parseLong(request.getParameter("id"));
         userService.updateUser(id,user);
-        response.sendRedirect("/ServletGetAll");
+        response.sendRedirect("/andersen_project/ServletGetAll");
     }
 }

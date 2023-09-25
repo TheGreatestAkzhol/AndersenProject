@@ -25,7 +25,7 @@
         <div class="card-header">New User</div>
           <div class="card-body">
 
-            <form method="POST" action="/ServletUpdateUser?id=${user.getId()}">
+            <form method="POST" action="/andersen_project/ServletUpdateUser?id=${user.getId()}">
               <div class="form-group">
                 <label for="exampleInputEmail1">Name</label>
                 <input type="text" class="form-control" id="exampleInputEmail1" name="name" value="${user.getName()}" aria-describedby="emailHelp" placeholder="Enter name">

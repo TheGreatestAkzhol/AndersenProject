@@ -33,9 +33,9 @@
         <td><c:out value="${user.getName()}"/></td>
         <td><c:out value="${user.getLastName()}"/></td>
         <td><c:out value="${user.getAge()}"/></td>
-        <td><a href="/ServletUpdateUser?id=${user.getId()}"><button type="button" class="btn btn-info">Edit</button></a>
+        <td><a href="/andersen_project/ServletUpdateUser?id=${user.getId()}"><button type="button" class="btn btn-info">Edit</button></a>
         </td>
-        <td><form method="POST" action="/ServletRemoveUser?id=${user.getId()}">
+        <td><form method="POST" action="/andersen_project/ServletRemoveUser?id=${user.getId()}">
             <input type="submit" value="Delete!">
         </form>
         </td>
@@ -58,7 +58,7 @@
                 <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
                     <div class="card-header">New User</div>
                     <div class="card-body">
-                        <form method="POST" action="/ServletAddUser">
+                        <form method="POST" action="/andersen_project/ServletAddUser">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Name</label>
                                 <input type="text" class="form-control" id="exampleInputEmail1" name="name" aria-describedby="emailHelp" placeholder="Enter name">
@@ -81,7 +81,7 @@
 </div>
 <button type="button" class="btn btn-info btn-lg btn-block" data-toggle="modal" data-target="#exampleModal">Add User</button>
 <br>
-<form method="post" action="/ServletCleanAll">
+<form method="post" action="/andersen_project/ServletCleanAll">
 <button type="submit" class="btn btn-danger btn-lg btn-block">Clean All</button>
 </form>
 </body>
