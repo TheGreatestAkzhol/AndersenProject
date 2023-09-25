@@ -17,6 +17,6 @@
     </a>
 </nav>
 <br/>
-<a href="/ServletGetAll"><button type="button" class="btn btn-info btn-lg btn-block">All Users</button></a>
+<a href="/andersen_project/ServletGetAll"><button type="button" class="btn btn-info btn-lg btn-block">All Users</button></a>
 </body>
 </html>
